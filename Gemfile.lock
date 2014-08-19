@@ -54,6 +54,18 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.7.1)
+    cucumber (1.3.16)
+      builder (>= 2.1.2)
+      diff-lcs (>= 1.1.3)
+      gherkin (~> 2.12)
+      multi_json (>= 1.7.5, < 2.0)
+      multi_test (>= 0.1.1)
+    cucumber-rails (1.4.1)
+      capybara (>= 1.1.2, < 3)
+      cucumber (>= 1.3.8, < 2)
+      mime-types (~> 1.16)
+      nokogiri (~> 1.5)
+      rails (>= 3, < 5)
     database_cleaner (1.3.0)
     debug_inspector (0.0.2)
     devise (3.3.0)
@@ -77,15 +89,17 @@ GEM
     foundation-rails (5.3.3.0)
       railties (>= 3.1.0)
       sass (>= 3.2.0)
+    gherkin (2.12.2)
+      multi_json (~> 1.3)
     guard (2.6.1)
       formatador (>= 0.2.4)
       listen (~> 2.7)
       lumberjack (~> 1.0)
       pry (>= 0.9.12)
       thor (>= 0.18.1)
-    guard-bundler (2.0.0)
-      bundler (~> 1.0)
-      guard (~> 2.2)
+    guard-cucumber (1.4.1)
+      cucumber (>= 1.2.0)
+      guard (>= 1.1.0)
     guard-rails (0.5.3)
       guard (~> 2.0)
     guard-rspec (4.3.1)
@@ -106,6 +120,7 @@ GEM
       hpricot (~> 0.8.6)
       ruby_parser (~> 3.1.1)
     i18n (0.6.11)
+    interception (0.5)
     jbuilder (2.1.3)
       activesupport (>= 3.0.0, < 5)
       multi_json (~> 1.2)
@@ -129,14 +144,21 @@ GEM
     mini_portile (0.6.0)
     minitest (5.4.0)
     multi_json (1.10.1)
+    multi_test (0.1.1)
     nokogiri (1.6.3.1)
       mini_portile (= 0.6.0)
     orm_adapter (0.5.0)
+    pg (0.17.1)
     polyglot (0.3.5)
     pry (0.10.1)
       coderay (~> 1.1.0)
       method_source (~> 0.8.1)
       slop (~> 3.4)
+    pry-rails (0.3.2)
+      pry (>= 0.9.10)
+    pry-rescue (1.4.1)
+      interception (>= 0.5)
+      pry
     quiet_assets (1.0.3)
       railties (>= 3.1, < 5.0)
     rack (1.5.2)
@@ -152,9 +174,12 @@ GEM
       bundler (>= 1.3.0, < 2.0)
       railties (= 4.1.5)
       sprockets-rails (~> 2.0)
-    rails_apps_pages (0.5.12)
-    rails_apps_testing (0.3.8)
+    rails_12factor (0.0.2)
+      rails_serve_static_assets
+      rails_stdout_logging
     rails_layout (1.0.21)
+    rails_serve_static_assets (0.0.2)
+    rails_stdout_logging (0.0.3)
     railties (4.1.5)
       actionpack (= 4.1.5)
       activesupport (= 4.1.5)
@@ -207,11 +232,17 @@ GEM
       rubyzip (~> 1.0)
       websocket (~> 1.0.4)
     sexp_processor (4.4.4)
+    shoulda-matchers (2.6.2)
+      activesupport (>= 3.0.0)
     simple_form (3.0.2)
       actionpack (~> 4.0)
       activemodel (~> 4.0)
     slop (3.6.0)
     spring (1.1.3)
+    spring-commands-cucumber (1.0.1)
+      spring (>= 0.9.1)
+    spring-commands-rspec (1.0.2)
+      spring (>= 0.9.1)
     sprockets (2.11.0)
       hike (~> 1.2)
       multi_json (~> 1.0)
@@ -254,12 +285,14 @@ DEPENDENCIES
   binding_of_caller
   capybara
   coffee-rails (~> 4.0.0)
+  cucumber-rails
   database_cleaner
   devise
   factory_girl_rails
   faker
   foundation-rails
-  guard-bundler
+  gherkin (~> 2.12.2)
+  guard-cucumber
   guard-rails
   guard-rspec
   haml-rails
@@ -267,10 +300,12 @@ DEPENDENCIES
   jbuilder (~> 2.0)
   jquery-rails
   launchy
+  pg
+  pry-rails
+  pry-rescue
   quiet_assets
   rails (= 4.1.5)
-  rails_apps_pages
-  rails_apps_testing
+  rails_12factor
   rails_layout
   rb-fchange
   rb-fsevent
@@ -279,8 +314,11 @@ DEPENDENCIES
   sass-rails (~> 4.0.3)
   sdoc (~> 0.4.0)
   selenium-webdriver
+  shoulda-matchers
   simple_form
   spring
+  spring-commands-cucumber
+  spring-commands-rspec
   sqlite3
   turbolinks
   uglifier (>= 1.3.0)

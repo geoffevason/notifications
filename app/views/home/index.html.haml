@@ -1,0 +1,9 @@
+
+= simple_form_for Post.new do |f|
+  = f.input :content, label: "Post"
+  = f.button :submit
+
+
+
+#feed
+  = render @posts

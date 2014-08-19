@@ -1,0 +1,12 @@
+.post{id: html_id(post)}
+  = post.content
+
+  .social_actions
+    = like_link(post)
+
+  .comments
+    = render post.comments
+    = simple_form_for([post, Comment.new]) do |f|
+      = f.input :content, label: "Comment"
+      = f.button :submit
+
