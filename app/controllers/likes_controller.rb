@@ -4,13 +4,19 @@ class LikesController < AuthenticatedController
     load_likeable
     @like = @likeable.likes.create(user: current_user)
     @like.save
-    redirect_to root_url
+    respond_to do |format|
+      format.html { redirect_to root_path }
+      format.js
+    end
   end
 
   def destroy
     @like = current_user.likes.find(params[:id])
     @like.destroy
-    redirect_to root_url
+    respond_to do |format|
+      format.html { redirect_to root_path }
+      format.js
+    end
   end
 
   private

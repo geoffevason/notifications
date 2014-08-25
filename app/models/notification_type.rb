@@ -12,9 +12,9 @@ class NotificationType
     @name = name
     @description = description
   end
-  
+
   def self.all
-    [ NotificationType.comment, 
+    [ NotificationType.comment,
       NotificationType.cocomment,
       NotificationType.like_comment,
       NotificationType.like_post ]

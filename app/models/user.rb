@@ -18,11 +18,10 @@ class User < ActiveRecord::Base
     for notification_type in notification_types
       notification_preferences.create!(notification_type: notification_type, send_email: true)
     end
-  end  
-  
+  end
+
   def should_send_email_for_notification_type?(notification_type)
     pref = notification_preferences.find { |pref| pref.notification_type == notification_type }
     pref && pref.send_email?
   end
-
 end

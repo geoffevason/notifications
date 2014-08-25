@@ -60,7 +60,9 @@ group :test do
   gem 'database_cleaner'
   gem 'launchy'
   gem 'selenium-webdriver'
-  
+  # Use poltergeist rather than selenium to run js tests headless (or if you need response headers)
+  gem 'poltergeist'
+
   gem 'email_spec'
 end
 

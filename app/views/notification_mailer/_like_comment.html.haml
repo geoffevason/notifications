@@ -1,5 +1,5 @@
-- liker = @notification.source_user
-- like = @notification.source_object
+- liker = notification.source_user
+- like = notification.source_object
 - comment = like.likeable
 
 %p== #{liker.name} liked #{link_to "your comment.", post_url(comment.post)}

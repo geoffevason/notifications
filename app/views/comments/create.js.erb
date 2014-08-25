@@ -1,0 +1,5 @@
+<% new_html = render @comment, :locals => { :comment => @comment } %>
+$('<%= escape_javascript(new_html).html_safe %>').hide().appendTo('#<%= html_id(@post)%> .comments').slideDown();
+$('#<%= html_id(@post)%> .new_comment textarea').val('')
+
+$('#<%= html_id(@post)%> .comment_count').html('<%=pluralize(@post.comments.length, "comments")%>');

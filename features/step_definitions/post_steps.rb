@@ -15,3 +15,8 @@ Given(/^I have created a post$/) do
   expect(@current_user).to be_present
   @post = FactoryGirl.create(:post, user: @current_user)
 end
+
+When(/^I add the post "(.*?)"$/) do |post_content|
+  step %{fill in "Post" with "#{post_content}"}
+  step %{I press "Post"}
+end

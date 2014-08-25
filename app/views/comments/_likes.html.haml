@@ -1,0 +1,4 @@
+= like_comment_link(comment)
+|
+- #Using length over count to avoid extra sql calls
+= pluralize(comment.likes.length, "likes")

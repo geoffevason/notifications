@@ -17,7 +17,7 @@ class Notification < ActiveRecord::Base
   validates :source_user, presence: true
   validates :source_object, presence: true
   validates :notification_type, presence: true
-  
+
   after_create :process
 
   def process

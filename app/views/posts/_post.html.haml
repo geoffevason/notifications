@@ -1,23 +1,20 @@
 .row.post{id: html_id(post)}
   .columns.small-2
-    %img(src="http://placehold.it/80x80&text=[img]")
+    %img(src="http://placehold.it/80x80&text=#{post.user.name}")
 
   .columns.small-10
     = post.content
 
-    .social_actions
-      = like_post_link(post)
-      |
-      - #Using length over count to avoid extra sql calls
-      = pluralize(post.likes.length, "likes")
+    .post_likes
+      = render partial: '/posts/likes', locals: { post: post }
 
     .comments
-      = pluralize(post.comments.length, "comments")
+      .comment_count= pluralize(post.comments.length, "comments")
       = render post.comments
 
     .row
       .columns.small-11.small-offset-1.large-10.large-offset-2
-        = form_for([post, Comment.new]) do |f|
+        = form_for([post, Comment.new], remote: true) do |f|
           .row
             .column.small-12
               = f.label :content, 'Comment', style:"display:none"

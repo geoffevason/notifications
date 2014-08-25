@@ -13,7 +13,7 @@ Rails.application.routes.draw do
   end
 
   resources :likes, only: [:destroy]
-  
+
   resources :notification_preferences, only: [:index] do
     put :update_all, on: :collection
   end

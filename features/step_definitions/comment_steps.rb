@@ -28,6 +28,7 @@ When(/^I add the comment "(.*?)" to the post$/) do |comment_text|
     fill_in("Comment", with: comment_text)
     click_button("Comment")
   }
+  @comment = Comment.last
 end
 
 When(/^I comment on the post$/) do 

@@ -1,16 +1,19 @@
 # Comments on posts
 class CommentsController < AuthenticatedController
+  respond_to :html, :js
+
   def create
     load_post
     @comment = @post.comments.new(comment_params)
     @comment.save
-    redirect_to root_url
+    respond_with(@comment, :location => root_path)
   end
 
   def destroy
     @comment = current_user.comments.find(params[:id])
+    @post = @comment.post
     @comment.destroy
-    redirect_to root_url
+    respond_with(@comment, :location => root_path)
   end
 
   private

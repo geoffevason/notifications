@@ -19,9 +19,9 @@ module ApplicationHelper
     # Run find on array because have already eager loaded the likes.
     current_like = likeable_object.likes.find { |l| l.user == current_user }
     if current_like
-      link_to 'Unlike', current_like, method: :delete, class: 'unlike'
+      link_to 'Unlike', current_like, method: :delete, remote: true
     else
-      link_to 'Like', create_path, method: :post, class: 'like'
+      link_to 'Like', create_path, method: :post, remote: true
     end
   end
 end

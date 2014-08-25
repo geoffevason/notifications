@@ -1,0 +1,5 @@
+<% likeable_type = @like.likeable_type.underscore.downcase -%>
+<% partial = "/#{likeable_type.pluralize}/likes" -%>
+<% locals = {}; locals[likeable_type.to_sym] = @like.likeable -%>
+<% new_html = render partial: partial, locals: locals %>
+$('#<%= html_id(@like.likeable)%> .<%=likeable_type%>_likes').html('<%= escape_javascript(new_html).html_safe %>');

@@ -6,7 +6,7 @@
 
   .columns.large-6
     #new_post_panel.panel
-      = form_for Post.new do |f|
+      = form_for Post.new, remote: true do |f|
         .row
           .column.small-12
             = f.label :content, 'Post', style:"display:none"

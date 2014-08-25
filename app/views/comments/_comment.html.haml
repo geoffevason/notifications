@@ -1,13 +1,11 @@
 .row.comment{id:html_id(comment)}
   .columns.small-1.large-2
-    %img(src="http://placehold.it/50x50&text=[img]")
+    %img(src="http://placehold.it/50x50&text=#{comment.user.name}")
   .columns.small-11.large-10
     = comment.content
     - if (comment.user == current_user)
-      = link_to 'Delete', comment, method: :delete, class: 'delete'
-
-    .social_actions
-      = like_comment_link(comment)
       |
-      - #Using length over count to avoid extra sql calls
-      = pluralize(comment.likes.length, "likes")
+      = link_to 'Delete', comment, method: :delete, class: 'delete', remote: true
+
+    .comment_likes
+      = render partial: '/comments/likes', locals: { comment: comment }

@@ -1,0 +1,4 @@
+<% new_html = render @post, locals: { post: @post } %>
+$('<%= escape_javascript(new_html).html_safe %>').hide().prependTo('#feed').slideDown();
+
+$('#new_post textarea').val('')

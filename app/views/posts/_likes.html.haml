@@ -1,0 +1,4 @@
+= like_post_link(post)
+|
+- #Using length over count to avoid extra sql calls
+= pluralize(post.likes.length, "likes")

@@ -10,7 +10,7 @@ module HtmlSelectorsHelpers
       "#feed"
 
     when "the post"
-      "##{html_id(@post)}"
+      "##{html_id(@post || Post.last)}"
 
     when "the comment"
       "##{html_id(@comment)}"
