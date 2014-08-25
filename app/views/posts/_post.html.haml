@@ -1,12 +1,27 @@
-.post{id: html_id(post)}
-  = post.content
+.row.post{id: html_id(post)}
+  .columns.small-2
+    %img(src="http://placehold.it/80x80&text=[img]")
 
-  .social_actions
-    = like_link(post)
+  .columns.small-10
+    = post.content
 
-  .comments
-    = render post.comments
-    = simple_form_for([post, Comment.new]) do |f|
-      = f.input :content, label: "Comment"
-      = f.button :submit
+    .social_actions
+      = like_post_link(post)
+      |
+      - #Using length over count to avoid extra sql calls
+      = pluralize(post.likes.length, "likes")
 
+    .comments
+      = pluralize(post.comments.length, "comments")
+      = render post.comments
+
+    .row
+      .columns.small-11.small-offset-1.large-10.large-offset-2
+        = form_for([post, Comment.new]) do |f|
+          .row
+            .column.small-12
+              = f.label :content, 'Comment', style:"display:none"
+              = f.text_area :content
+          .row
+            .column.small-12
+              = f.button 'Comment', class: "tiny right"

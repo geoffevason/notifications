@@ -1,7 +1,6 @@
 require 'rails_helper'
 
-
-RSpec.describe ApplicationHelper, :type => :helper do
+RSpec.describe ApplicationHelper, type: :helper do
   context "html_id" do
     it "should use the right class and id" do
       post = FactoryGirl.create(:post)
@@ -12,4 +11,3 @@ RSpec.describe ApplicationHelper, :type => :helper do
     end
   end
 end
-

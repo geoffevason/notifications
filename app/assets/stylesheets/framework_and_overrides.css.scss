@@ -21,11 +21,11 @@
   @extend .columns;
   @extend .text-center;
   }
-// create your own classes
+//create your own classes
 // to make views framework-neutral
-.column {
-  @include six-columns-centered;
-  }
+//.column {
+//  @include six-columns-centered;
+//  }
 .form {
   @include grid-column(6);
   }

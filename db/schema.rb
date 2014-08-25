@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140819203117) do
+ActiveRecord::Schema.define(version: 20140820153142) do
 
   create_table "comments", force: true do |t|
     t.text     "content"
@@ -32,7 +32,34 @@ ActiveRecord::Schema.define(version: 20140819203117) do
     t.datetime "updated_at"
   end
 
+  add_index "likes", ["likeable_type", "likeable_id"], name: "index_likes_on_likeable_type_and_likeable_id"
   add_index "likes", ["user_id"], name: "index_likes_on_user_id"
+
+  create_table "notification_preferences", force: true do |t|
+    t.integer  "user_id"
+    t.string   "notification_type"
+    t.boolean  "send_email",        default: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "notification_preferences", ["user_id"], name: "index_notification_preferences_on_user_id"
+
+  create_table "notifications", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "source_user_id"
+    t.integer  "source_object_id"
+    t.string   "source_object_type"
+    t.boolean  "read",               default: false
+    t.boolean  "processed",          default: false
+    t.string   "notification_type"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "notifications", ["source_object_id", "source_object_type"], name: "index_notifications_on_source_object_id_and_source_object_type"
+  add_index "notifications", ["source_user_id"], name: "index_notifications_on_source_user_id"
+  add_index "notifications", ["user_id"], name: "index_notifications_on_user_id"
 
   create_table "posts", force: true do |t|
     t.text     "content"

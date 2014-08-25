@@ -227,6 +227,8 @@ Devise.setup do |config|
   # config.navigational_formats = ['*/*', :html]
 
   # The default HTTP method used to sign out a resource. Default is :delete.
+  # If deletes aren't working for cucumber:
+  #  See https://github.com/plataformatec/devise/wiki/How-To:-Test-with-Cucumber
   config.sign_out_via = :delete
 
   # ==> OmniAuth

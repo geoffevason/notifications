@@ -1,0 +1,8 @@
+- commenter = notification.source_user
+- comment = notification.source_object
+- post = comment.post
+
+.notification_content
+  = commenter.name
+  commented on
+  = link_to 'your post.', post

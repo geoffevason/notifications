@@ -7,6 +7,6 @@ Feature: Adding posts
     Given I am signed in and on the home page
     When fill in the following:
       | Post | This is my post |
-    And I press "Create Post"
+    And I press "Post"
     Then I should be on the home page
     And I should see "This is my post" within the feed

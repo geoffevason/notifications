@@ -1,9 +1,21 @@
+.row
+  .columns.large-3
+    #notifications.panel
+      %h6 Notifications
+      = render @notifications
 
-= simple_form_for Post.new do |f|
-  = f.input :content, label: "Post"
-  = f.button :submit
+  .columns.large-6
+    #new_post_panel.panel
+      = form_for Post.new do |f|
+        .row
+          .column.small-12
+            = f.label :content, 'Post', style:"display:none"
+            = f.text_area :content
+        .row
+          .column.small-12
+            = f.button 'Post', class: "right"
 
+    #feed= render @posts
 
-
-#feed
-  = render @posts
+  %aside.columns.large-3.hide-for-small
+    %img(src="http://placehold.it/300x440&text=[img]")

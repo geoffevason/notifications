@@ -9,3 +9,13 @@ Feature: Adding comments
     When I add the comment "cool post" to the post
     Then I should be on the home page
     And I should see "cool post" within the comments for the post
+
+
+  Scenario: Comments Count
+    Given a post exists
+    And the post has 2 comments
+    And I am signed in
+    When I go to the home page
+    And I add the comment "cool post" to the post
+    Then I should be on the home page
+    And I should see "3 comments" within the comments for the post

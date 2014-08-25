@@ -1,8 +1,10 @@
+# Comments are used to discuss posts
 class Comment < ActiveRecord::Base
+  include Likeable
+  include NotificationSource
+
   belongs_to :user
   belongs_to :post
-
-  has_many :likes, :as => :likeable
 
   validates :content, presence: true
   validates :user, presence: true

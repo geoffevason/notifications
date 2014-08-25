@@ -13,3 +13,41 @@
  *= require_tree .
  *= require_self
  */
+
+html, body {
+  background-color: #eee;
+}
+
+.comments {
+  font-size: 0.9em;
+  color: #444;
+}
+.comment {
+  margin-bottom: 8px !important;
+  border-bottom: 1px solid #ddd;
+}
+
+.post {
+  border-bottom: 1px solid #bbb;
+  margin: 15px 0 !important;
+}
+
+.social_actions {
+  font-size: 0.7em;
+}
+
+.notification {
+  font-size: 0.7em;  
+}
+.notification.unread {
+  font-weight: bold;
+}
+
+#new_post_panel.panel {
+  background-color: #fff;
+}
+
+main {
+  padding-top: 30px;
+}
+

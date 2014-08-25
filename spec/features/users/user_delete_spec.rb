@@ -17,14 +17,10 @@ feature 'User delete', :devise do
   #   Then I should see an account deleted message
   scenario 'user can delete own account' do
     user = FactoryGirl.create(:user)
-    login_as(user, :scope => :user)
+    login_as(user, scope: :user)
     visit edit_user_registration_path(user)
     click_button 'Cancel my account'
-    expect(page).to have_content 'Bye! Your account has been successfully cancelled. We hope to see you again soon.'
+    expect(page).to have_content 'Your account has been successfully cancelled.'
   end
 
 end
-
-
-
-

@@ -12,7 +12,9 @@ describe User do
   end
 
   it { should have_many(:posts) }
-  it { should have_many(:comments) }
-  it { should have_many(:likes) }
+  it { should have_many(:notifications) }
+  it { should have_many(:notification_preferences) }
 
+  it { should have_many(:likes) }
+  it { should have_many(:comments) }
 end

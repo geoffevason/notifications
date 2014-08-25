@@ -1,0 +1,8 @@
+- liker = notification.source_user
+- like = notification.source_object
+- post = like.likeable
+
+.notification_content
+  = liker.name #link_to liker.name, liker
+  liked
+  = link_to 'your post.', post

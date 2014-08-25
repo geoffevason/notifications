@@ -1,15 +1,12 @@
+# A post is the content that users share
 class Post < ActiveRecord::Base
-  belongs_to :user
+  include Likeable
 
-  has_many :likes, :as => :likeable
+  belongs_to :user
 
   validates :content, presence: true
   validates :user, presence: true
 
-  has_many :comments #, :conditions => {:deleted => false}
-  has_many :commenters, -> { distinct }, through: :comments, :source => :user
-
-  def liked_by?(user)
-    Like.where(user: user, likeable: self).exists?
-  end
+  has_many :comments
+  has_many :commenters, -> { distinct }, through: :comments, source: :user
 end

@@ -9,14 +9,14 @@ gem 'jquery-rails'
 gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0',          group: :doc
-gem 'spring',        group: :development
 gem 'devise'
 gem 'foundation-rails'
 gem 'haml-rails'
 gem 'simple_form'
 
 group :development do
-  gem 'binding_of_caller', :platforms=>[:mri_21]
+  gem 'spring'
+  gem 'binding_of_caller', platforms: [:mri_21]
   gem 'guard-rails'
   gem 'guard-rspec'
   gem 'guard-cucumber'
@@ -26,6 +26,13 @@ group :development do
 
   gem 'pry-rails'
   gem 'pry-rescue'
+
+  gem 'rails_best_practices', require: false
+  gem 'rubocop', require: false
+
+  # Live reload for faster html/css iterations
+  gem 'guard-livereload', require: false
+  gem 'rack-livereload'
 end
 
 
@@ -44,6 +51,8 @@ group :development, :test do
   gem 'gherkin', '~> 2.12.2'
 
   gem 'faker'
+
+  gem 'simplecov', require: false
 end
 
 group :test do
@@ -51,14 +60,16 @@ group :test do
   gem 'database_cleaner'
   gem 'launchy'
   gem 'selenium-webdriver'
+  
+  gem 'email_spec'
 end
 
 # Add to darwin group for heroku
 # http://www.johnplummer.com/rails/heroku-error-conditional-rbfsevent-gem.html
 group :test, :darwin do
-  gem 'rb-fchange', :require=>false
-  gem 'rb-fsevent', :require=>false
-  gem 'rb-inotify', :require=>false
+  gem 'rb-fchange', require: false
+  gem 'rb-fsevent', require: false
+  gem 'rb-inotify', require: false
 end
 
 group :production do

@@ -1,47 +1,32 @@
 # features/support/selectors.rb
 module HtmlSelectorsHelpers
-# Maps a name to a selector. Used primarily by the
-#
-# When /^(.+) within (.+)$/ do |step, scope|
-#
-# step definitions
-#
+  # Maps a name to a selector. Used primarily by the
+  #
+  # When /^(.+) within (.+)$/ do |step, scope|
   def selector_for(locator)
     case locator
 
-      when "the feed"
-        "#feed"
+    when "the feed"
+      "#feed"
 
-      when "the post"
-        "##{html_id(@post)}"
+    when "the post"
+      "##{html_id(@post)}"
 
-      when "the comment"
-        "##{html_id(@comment)}"
+    when "the comment"
+      "##{html_id(@comment)}"
 
-      when "the comments for the post"
-        "##{html_id(@post)} .comments"
+    when "the comments for the post"
+      "##{html_id(@post)} .comments"
+      
+    when "the notifications area"
+      "#notifications"
 
-# Add more mappings here.
-# Here is an example that pulls values out of the Regexp:
-#
-# when /^the (notice|error|info) flash$/
-# ".flash.#{$1}"
+    when /^"(.+)"$/
+      $1
 
-# You can also return an array to use a different selector
-# type, like:
-#
-# when /the header/
-# [:xpath, "//header"]
-
-# This allows you to provide a quoted selector as the scope
-# for "within" steps as was previously the default for the
-# web steps:
-      when /^"(.+)"$/
-        $1
-
-      else
-        raise "Can't find mapping from \"#{locator}\" to a selector.\n" +
-                  "Now, go and add a mapping in #{__FILE__}"
+    else
+      fail "Can't find mapping from \"#{locator}\" to a selector.\n" \
+            "Now, go and add a mapping in #{__FILE__}"
     end
   end
 end

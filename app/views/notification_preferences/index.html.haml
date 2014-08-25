@@ -1,0 +1,16 @@
+.row
+  .columns.small-6.small-offset-3
+    .panel
+      = form_tag(update_all_notification_preferences_path, method: :put) do |f|
+
+        %p Send me an email when:
+        - NotificationType.all.each do |notification_type|
+          .row
+            .columns.small-11.small-offset-1
+              - id = notification_type.name
+              - checked = current_user.should_send_email_for_notification_type?(notification_type)
+              = check_box_tag 'notification_types_to_send_email_for[]', notification_type.name, checked, {:id => id}
+              %label{:for => id}= notification_type.description
+        .row
+          .columns.small-4.small-centered
+            = button_tag "Save"

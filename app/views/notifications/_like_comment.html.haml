@@ -1,0 +1,8 @@
+- liker = notification.source_user
+- like = notification.source_object
+- comment = like.likeable
+
+.notification_content
+  = liker.name
+  liked
+  = link_to 'your comment.', post_path(comment.post, anchor: html_id(comment))

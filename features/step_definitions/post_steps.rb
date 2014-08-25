@@ -2,15 +2,16 @@ Given(/^a post exists$/) do
   @post = FactoryGirl.create(:post)
 end
 
-When(/^I add the comment "(.*?)" to the post$/) do |comment_text|
-  post_selector = "#post_#{@post.id}"
-  within(post_selector) {
-    fill_in("Comment", :with => comment_text)
-    click_button("Comment")
-  }
+Given(/^a post exists with content "(.*?)"$/) do |content|
+  @post = FactoryGirl.create(:post, content: content)
 end
 
+Given(/^the user "(.*?)" has created a post$/) do |user_ref|
+  user = user_for_user_ref(user_ref)
+  @post = FactoryGirl.create(:post, user: user)
+end
 
-Given(/^the post has a comment$/) do
-  @comment = FactoryGirl.create(:comment, post: @post)
+Given(/^I have created a post$/) do
+  expect(@current_user).to be_present
+  @post = FactoryGirl.create(:post, user: @current_user)
 end

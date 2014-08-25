@@ -2,8 +2,7 @@
 
 FactoryGirl.define do
   factory :like do
-    user nil
-    likeable_type "Post"
-    likeable_id 1
+    user
+    likeable { |a| a.association(:post) }
   end
 end

@@ -1,0 +1,2 @@
+.notification{class: (notification.read? ? 'read' : 'unread'), id: html_id(notification)}
+  = render "/notifications/#{notification.notification_type}", :notification => notification

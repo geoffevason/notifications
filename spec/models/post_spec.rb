@@ -16,8 +16,8 @@ describe Post do
     it "should have comments" do
       @post = FactoryGirl.create(:post)
       @user = FactoryGirl.create(:user)
-      @comment1 = FactoryGirl.create(:comment, :user => @user, :post => @post)
-      @comment2 = FactoryGirl.create(:comment, :user => @user, :post => @post)
+      @comment1 = FactoryGirl.create(:comment, user: @user, post: @post)
+      @comment2 = FactoryGirl.create(:comment, user: @user, post: @post)
 
       expect(@post.comments.count).to eq(2)
     end
@@ -30,21 +30,15 @@ describe Post do
     end
 
     it "should contain users who commented on the post" do
-      @comment = FactoryGirl.create(:comment, :user => @user, :post => @post)
+      @comment = FactoryGirl.create(:comment, user: @user, post: @post)
       expect(@post.commenters).to include(@user)
     end
 
     it "should contain only unique commentors" do
-      @comment = FactoryGirl.create(:comment, :user => @user, :post => @post)
-      @comment2 = FactoryGirl.create(:comment, :user => @user, :post => @post)
+      @comment = FactoryGirl.create(:comment, user: @user, post: @post)
+      @comment2 = FactoryGirl.create(:comment, user: @user, post: @post)
       expect(@post.commenters.count).to eq(1)
       expect(@post.commenters).to eq([@user])
     end
-
-    # it "should not contain users who deleted their comments" do
-    #   @comment.disable!
-    #   @post.reload
-    #   expect(commenters).not_to include(@user)
-    # end
   end
 end

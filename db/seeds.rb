@@ -5,5 +5,12 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
-user = CreateAdminService.new.call
-puts 'CREATED ADMIN USER: ' << user.email
+
+# user = CreateAdminService.new.call
+# puts 'CREATED ADMIN USER: ' << user.email
+
+
+# puts "Creating Notification Types"
+# NotificationType::TYPE_NAMES.each do |notification_name|
+#   NotificationType.find_or_create_by!(name: notification_name)
+# end

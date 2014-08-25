@@ -1,0 +1,9 @@
+- commenter = @notification.source_user
+- comment = @notification.source_object
+- post = comment.post
+
+%p== #{commenter.name} has commented on your post, saying:
+
+%blockquote= simple_format comment.content
+
+%p== View the comment and reply by #{link_to "visiting your post", post_url(post)}
