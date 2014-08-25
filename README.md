@@ -1,48 +1,41 @@
 Notifications
-================
+=============
 
-This application was generated with the [rails_apps_composer](https://github.com/RailsApps/rails_apps_composer) gem
-provided by the [RailsApps Project](http://railsapps.github.io/).
+This application is a demo app for a simple public news feed.  It includes the following features:
 
-Rails Composer is open source and supported by subscribers. Please join RailsApps to support development of Rails Composer.
+The Feed:
+- Users can add posts to a public feed
+- Users can comment on posts
+  - (can later delete their comments)
+- Users can like posts or comments (the Like model uses a polymorphic association)
+  - (can later unlike something)
 
-Problems? Issues?
------------
 
-Need help? Ask on Stack Overflow with the tag 'railsapps.'
+Notifications:
+- Users will get notified via on site notifications when another user takes an action related to something they've done
+  - eg likes or comments on their post
+- Users can optionally receive email notifications as
 
-Your application contains diagnostics in the README file. Please provide a copy of the README file when reporting any issues.
 
-If the application doesn’t work as expected, please [report an issue](https://github.com/RailsApps/rails_apps_composer/issues)
-and include the diagnostics.
+Responsive Design:
+- Uses ZURB foundation 5 for responsive design
 
-Ruby on Rails
--------------
 
-This application requires:
+
+Points of Interest
+------------------
 
 - Ruby 2.1.2
 - Rails 4.1.5
+- rspec for unit testing
+- Cucumber for integration testing
+- HAML
+- Devise for authentication
 
-Learn more about [Installing Rails](http://railsapps.github.io/installing-rails.html).
 
-Getting Started
----------------
+Model Concerns: There are 2 concerns. The first is for items that are likeable.  The second is for items that cause
+the creation of notifications (NotificationSource).
 
-Documentation and Support
--------------------------
+ActionJob:  The notification objects and emails are created via a NotificationsCreationJob object.  When Rails 4.2 is
+available this will be updated to inherit from AcitonJob so it can be run asynchronously.
 
-Issues
--------------
-
-Similar Projects
-----------------
-
-Contributing
-------------
-
-Credits
--------
-
-License
--------
