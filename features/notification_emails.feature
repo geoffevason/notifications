@@ -3,6 +3,12 @@ Feature: Notification Emails
   I want to choose if I want to receive email notifications based on stuff that is related to me
   So that I can be more engaged with the app and not feel like I'm being spammed
 
+  Scenario: Notification preferences should appear checked
+    Given I am signed in
+    And I opt to get emails when "someone comments on my post"
+    When I go to the notification preferences page
+    Then the "someone comments on my post" checkbox should be checked
+
   Scenario: Original poster receives an email notification when a comment is made
     Given I am signed in
     And I opt to get emails when "someone comments on my post"    

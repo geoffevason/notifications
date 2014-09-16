@@ -25,6 +25,7 @@ group :development do
 
   gem 'pry-rails'
   gem 'pry-rescue'
+  gem 'awesome_print'
 
   gem 'rails_best_practices', require: false
   gem 'rubocop', require: false

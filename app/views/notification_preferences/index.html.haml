@@ -8,7 +8,7 @@
           .row
             .columns.small-11.small-offset-1
               - id = notification_type.name
-              - checked = current_user.should_send_email_for_notification_type?(notification_type)
+              - checked = current_user.should_send_email_for_notification_type?(notification_type.name)
               = check_box_tag 'notification_types_to_send_email_for[]', notification_type.name, checked, {:id => id}
               %label{:for => id}= notification_type.description
         .row

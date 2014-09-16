@@ -20,8 +20,8 @@ class User < ActiveRecord::Base
     end
   end
 
-  def should_send_email_for_notification_type?(notification_type)
-    pref = notification_preferences.find { |pref| pref.notification_type == notification_type }
+  def should_send_email_for_notification_type?(notification_type_name)
+    pref = notification_preferences.find { |pref| pref.notification_type == notification_type_name }
     pref && pref.send_email?
   end
 end
